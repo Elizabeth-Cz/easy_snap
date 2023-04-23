@@ -12,5 +12,5 @@
       "32": "mobile_popup_icon.png"
     }
   },
-  "permissions": ["activeTab"]
+  "permissions": ["activeTab", "downloads", "all_urls"]
 }
