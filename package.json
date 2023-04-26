@@ -1,0 +1,24 @@
+{
+  "name": "easy_snap",
+  "version": "1.0.0",
+  "description": "easy mockup creator",
+  "main": "popup.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elizabeth-Cz/easy_snap.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Elizabeth-Cz/easy_snap/issues"
+  },
+  "homepage": "https://github.com/Elizabeth-Cz/easy_snap#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22",
+    "puppeteer": "^19.11.0"
+  }
+}

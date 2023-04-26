@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mobile Screenshot Downloader</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Mobile Screenshot Downloader</h1>
+      <p>Enter the URL of the website you want to screenshot:</p>
+      <form>
+        <input type="text" id="url" placeholder="https://example.com" />
+        <div class="buttons-controller">
+          <button type="button" id="download-mobile">
+            Download Mobile Screenshot
+          </button>
+          <button type="button" id="download-tablet">
+            Download Tablet Screenshot
+          </button>
+          <button type="button" id="download-desktop">
+            Download Desktop Screenshot
+          </button>
+        </div>
+      </form>
+      <p id="message"></p>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
