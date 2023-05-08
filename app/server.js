@@ -49,13 +49,13 @@ const takeScreenshot = async (req, res) => {
     });
 
     // Navigate to the URL
-    await page.goto(url);
+    await page.goto(url, { waitUntil: "networkidle2" });
 
     // Wait for the page to load completely
     // await page.waitForLoadState("networkidle");
 
     // Take a screenshot of the page
-    const screenshot = await page.screenshot({ fullPage: true });
+    const screenshot = await page.screenshot({ fullPage: false });
 
     // Send the screenshot back as a response
     res.set("Content-Type", "image/png");
@@ -75,38 +75,3 @@ app.get("/screenshot/:device", takeScreenshot);
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
-
-// Launch Puppeteer ** working do not touch
-// (async () => {
-//   const browser = await puppeteer.launch({
-//     headless: "new",
-//   });
-//   const page = await browser.newPage();
-
-//   // Endpoint for taking a screenshot
-//   app.get("/screenshot/mobile", async (req, res) => {
-//     const { url } = req.query;
-//     try {
-//       // Set the viewport to a mobile device
-//       await page.setViewport({
-//         width: 375,
-//         height: 667,
-//         deviceScaleFactor: 2,
-//         isMobile: true,
-//         hasTouch: true,
-//         isLandscape: false,
-//       });
-
-//       // Navigate to the URL and wait for the page to load
-//       await page.goto(url);
-
-//       // Take a screenshot of the page and return it as a PNG image
-//       const screenshot = await page.screenshot({ type: "png" });
-//       res.set("Content-Type", "image/png");
-//       res.send(screenshot);
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).send("Error taking screenshot");
-//     }
-//   });
-// })();

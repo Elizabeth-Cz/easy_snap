@@ -49,3 +49,7 @@ button[type="button"]:hover {
   margin-top: 1rem;
   font-size: 1.5rem;
 }
+
+#canvas {
+  display: none;
+}
