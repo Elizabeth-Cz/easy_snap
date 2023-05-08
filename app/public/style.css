@@ -2,11 +2,15 @@
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
+  /* background-color: #1a1a1a; */
+  color: #fff;
 }
 
 h1 {
+  font-family: "Monoton", cursive;
   font-size: 3rem;
   margin-bottom: 1rem;
+  font-weight: 400;
 }
 
 form {
@@ -23,6 +27,8 @@ input[type="text"] {
   border-radius: 5px;
   /* margin-right: 0.5rem; */
   /* width: 70%; */
+  background-color: #363636;
+  color: #fff;
 }
 
 button[type="button"] {
@@ -30,13 +36,14 @@ button[type="button"] {
   padding: 0.5rem;
   border: none;
   border-radius: 5px;
-  background-color: #4285f4;
+  background-color: #ff8c00;
   color: #fff;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button[type="button"]:hover {
-  background-color: #3367d6;
+  background-color: #ff7100;
 }
 
 .buttons-controller {
@@ -53,3 +60,11 @@ button[type="button"]:hover {
 #canvas {
   display: none;
 }
+
+body {
+  background-color: #121212;
+  color: #fff;
+}
+
+/* Add Google font */
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");

@@ -1,6 +1,22 @@
 const express = require("express");
 const puppeteer = require("puppeteer");
 const cors = require("cors");
+const { createCanvas, loadImage } = require("canvas");
+
+const addFrameToScreenshot = async (screenshotBuffer) => {
+  // Load the PNG frame and the screenshot into a canvas
+  const canvas = createCanvas(437, 885);
+  const ctx = canvas.getContext("2d");
+  const frame = await loadImage("./frames/Mobile-frame-large.png");
+  const screenshot = await loadImage(screenshotBuffer);
+
+  // Draw the screenshot and the frame onto the canvas
+  ctx.drawImage(screenshot, 24, 129, 390, 645);
+  ctx.drawImage(frame, 0, 0, 437, 885);
+
+  // Return the canvas as a PNG buffer
+  return canvas.toBuffer();
+};
 
 const app = express();
 const port = 3000;
@@ -8,7 +24,7 @@ const port = 3000;
 const viewPorts = {
   mobile: {
     width: 390,
-    height: 844,
+    height: 645,
   },
   tablet: {
     width: 820,
@@ -56,10 +72,12 @@ const takeScreenshot = async (req, res) => {
 
     // Take a screenshot of the page
     const screenshot = await page.screenshot({ fullPage: false });
+    const screenshotWithFrameBuffer = await addFrameToScreenshot(screenshot);
 
     // Send the screenshot back as a response
     res.set("Content-Type", "image/png");
-    res.send(screenshot);
+    res.set("Content-Disposition", 'attachment; filename="screenshot.png"');
+    res.send(screenshotWithFrameBuffer);
   } catch (err) {
     console.error(err);
     res.status(500).send("Error taking screenshot");
